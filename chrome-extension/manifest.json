@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "TDM Fast 资源嗅探",
+  "version": "4.0.0",
+  "description": "TDM Fast Download Manager 的浏览器助手：接管下载链接，嗅探网页视频/音频/文件，支持 YouTube、X、B站等主流平台。",
+  "permissions": [
+    "webRequest",
+    "downloads",
+    "contextMenus",
+    "storage",
+    "notifications",
+    "tabs",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "http://127.0.0.1:37651/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "inject.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TDM Fast 嗅探",
+    "default_icon": {
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}

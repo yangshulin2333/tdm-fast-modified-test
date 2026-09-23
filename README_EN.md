@@ -1,5 +1,10 @@
 # TDM Fast 1.0.0 Modified Test Build
 
+## Chrome extension download and installation guide
+
+[ZIP](https://github.com/yangshulin2333/tdm-fast-modified-test/releases/download/v1.0.0-test.1/TDM-Fast-Chrome-extension-4.0.0.zip) · [教程 / Guide](docs/CHROME_EXTENSION_EN.md) · [插件文件 / Extension files](chrome-extension/)
+
+
 [中文](README.md) | English
 
 An experimental, unofficial modified distribution of TDM Fast 1.0.0. This is not the complete source repository. The modification makes the local `LicenseManager.isActivated()` return `true`; it does not issue a server-side license or change remote authorization records. No ownership or relicensing rights over third-party software are claimed.

@@ -1,5 +1,10 @@
 # TDM Fast 1.0.0 修改测试版
 
+## Chrome 插件独立下载与详细安装教程
+
+[ZIP](https://github.com/yangshulin2333/tdm-fast-modified-test/releases/download/v1.0.0-test.1/TDM-Fast-Chrome-extension-4.0.0.zip) · [教程 / Guide](docs/CHROME_EXTENSION.md) · [插件文件 / Extension files](chrome-extension/)
+
+
 中文 | [English](README_EN.md)
 
 本仓库分发 TDM Fast 1.0.0 的实验性修改测试包，非官方版本，也不是完整源代码仓库。修改将本地 `LicenseManager.isActivated()` 的返回值设为 `true`；不生成服务端许可证，也不修改远程授权记录。未声明对第三方软件拥有版权或再许可权。

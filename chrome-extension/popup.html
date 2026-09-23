@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { width: 360px; margin: 0; font-family: "Segoe UI","Microsoft YaHei",sans-serif; font-size: 12px; background: #f4f5f6; }
+  .head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: linear-gradient(#4aa3f0,#2f7be0); color: #fff; }
+  .head h1 { font-size: 13px; margin: 0; flex: 1; }
+  .head button { background: rgba(255,255,255,.2); border: none; color: #fff; padding: 4px 8px; border-radius: 3px; cursor: pointer; }
+  .list { max-height: 340px; overflow-y: auto; }
+  .item { display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-bottom: 1px solid #e6e8ea; background: #fff; }
+  .item:hover { background: #f2f8ff; }
+  .item input { margin: 0; }
+  .meta { flex: 1; min-width: 0; }
+  .fn { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub { color: #888; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .empty { padding: 24px 12px; text-align: center; color: #999; }
+  .foot { display: flex; gap: 8px; padding: 10px 12px; }
+  .foot button { flex: 1; padding: 7px; border: 1px solid #b0b4b8; border-radius: 3px; background: #fff; cursor: pointer; }
+  .foot button.primary { background: linear-gradient(#4aa3f0,#2f7be0); color: #fff; border-color: #2f7be0; }
+  .tag { font-size: 10px; padding: 1px 6px; border-radius: 8px; background: #e3eefb; color: #2f7be0; white-space: nowrap; align-self: flex-start; }
+  .warn { font-size: 10px; color: #e65100; margin-top: 2px; }
+  .hintline { font-size: 10px; color: #d32f2f; margin-top: 2px; }
+.takeover-row{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:12px;color:#556080;border-bottom:1px solid #eef1f6;user-select:none;background:#fff}
+.takeover-row input{width:15px;height:15px;cursor:pointer;flex:none}
+.takeover-row label{flex:1;cursor:pointer}
+.gear{background:none;border:none;cursor:pointer;font-size:14px;padding:2px 4px;color:#556080;border-radius:3px}
+.gear:hover{background:#eef2f8}
+.settings{display:none;padding:10px 12px;background:#fbfcfe;border-bottom:1px solid #eef1f6}
+.settings.open{display:block}
+.settings h2{font-size:11px;color:#8a97b3;margin:0 0 8px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-bottom:10px}
+.cats label{display:flex;align-items:center;gap:6px;font-size:12px;color:#333;cursor:pointer}
+.cats input{width:14px;height:14px;cursor:pointer}
+.custom-row{margin-bottom:8px}
+.custom-row label{display:block;font-size:11px;color:#667;margin-bottom:4px}
+.custom-row input{width:100%;box-sizing:border-box;padding:6px 8px;border:1px solid #d5dbe6;border-radius:4px;font-size:12px}
+.size-row{display:flex;align-items:center;gap:6px;font-size:12px;color:#556080}
+.size-row input{width:56px;padding:4px 6px;border:1px solid #d5dbe6;border-radius:4px;font-size:12px}
+.settings .saved{font-size:10px;color:#0f9d6b;margin-top:6px;height:12px}
+</style>
+</head>
+<body>
+  <div class="head">
+    <h1>TDM Fast 嗅探到的资源</h1>
+    <button id="clear">清空</button>
+  </div>
+  <div class="takeover-row">
+    <input type="checkbox" id="takeover" checked>
+    <label for="takeover">接管浏览器下载（点链接自动用 TDM Fast）</label>
+    <button class="gear" id="gear" title="设置要接管的文件类型">⚙</button>
+  </div>
+  <div class="settings" id="settings">
+    <h2>接管以下类型的下载</h2>
+    <div class="cats" id="cats"></div>
+    <div class="custom-row">
+      <label for="customExt">自定义扩展名（逗号分隔，如 psd, sketch, apk）</label>
+      <input type="text" id="customExt" placeholder="留空则不额外接管">
+    </div>
+    <div class="size-row">
+      <span>仅接管大于</span>
+      <input type="number" id="minSize" min="0" step="1" value="0">
+      <span>MB 的文件（0=不限）</span>
+    </div>
+    <div class="custom-row">
+      <label for="blacklist">网站黑名单（这些站点不嗅探、不接管，逗号或换行分隔）</label>
+      <textarea id="blacklist" rows="2" placeholder="如 bank.com, mail.company.com"></textarea>
+    </div>
+    <div class="saved" id="saved"></div>
+  </div>
+  <div id="list" class="list"></div>
+  <div class="foot">
+    <button id="selAll">全选</button>
+    <button id="send" class="primary">下载所选</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
